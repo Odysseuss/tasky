@@ -5,11 +5,13 @@ import com.killswitch.tasky.model.Note;
 import com.killswitch.tasky.service.NoteService;
 import com.killswitch.tasky.service.TaskService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RequiredArgsConstructor
+@Slf4j
 @RestController
 public class TaskController {
 
@@ -21,38 +23,46 @@ public class TaskController {
 
     @GetMapping(TASK_PATH)
     public Iterable<Task> getTasks() {
+        log.info("Get all tasks");
         return taskService.getAllTasks();
     }
 
     @GetMapping(TASK_PATH_ID)
     public Task getTaskById(@PathVariable("taskId") Long id) {
+        log.info("Get task by id: {}", id);
         return taskService.getTask(id).orElse(null);
     }
 
 
     @GetMapping(TASK_PATH_ID + "/notes")
     public Iterable<Note> getTaskNotes(@PathVariable("taskId") Long id) {
+        log.info("Get task notes by id: {}", id);
         return noteService.getNotesByTaskId(id);
     }
 
     @DeleteMapping
     public ResponseEntity<Void> deleteTask(@PathVariable("taskId") Long id) {
+        log.info("Delete task by id: {}", id);
 
         if (taskService.deleteTask(id)) {
+            log.info("Deleted task with id: {}", id);
             return ResponseEntity.ok().build();
         } else {
+            log.info("Could not delete task with id: {}", id);
             return ResponseEntity.notFound().build();
         }
     }
 
     @PostMapping(TASK_PATH)
     public ResponseEntity<Task> addTask(@RequestBody Task task) {
+        log.info("Add task: {}", task);
         Task createdTask = taskService.saveTask(task);
         return ResponseEntity.created(ServletUriComponentsBuilder.fromCurrentRequest().path(TASK_PATH_ID).buildAndExpand(createdTask.getId()).toUri()).build();
     }
 
     @PostMapping(TASK_PATH_ID + "/notes")
     public Note addNoteForTask(@PathVariable("taskId") Long id, @RequestBody Note note) {
+        log.info("Add note for task with id: {}, {}", id, note);
         return noteService.addNote(id, note);
     }
 
