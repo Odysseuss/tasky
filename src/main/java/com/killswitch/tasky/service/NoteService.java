@@ -1,6 +1,6 @@
 package com.killswitch.tasky.service;
 
-import com.killswitch.tasky.model.Note;
+import com.killswitch.tasky.model.entity.Note;
 
 public interface NoteService {
 

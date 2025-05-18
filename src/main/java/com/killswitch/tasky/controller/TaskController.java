@@ -1,7 +1,7 @@
 package com.killswitch.tasky.controller;
 
-import com.killswitch.tasky.model.Task;
-import com.killswitch.tasky.model.Note;
+import com.killswitch.tasky.model.entity.Task;
+import com.killswitch.tasky.model.entity.Note;
 import com.killswitch.tasky.service.NoteService;
 import com.killswitch.tasky.service.TaskService;
 import lombok.RequiredArgsConstructor;

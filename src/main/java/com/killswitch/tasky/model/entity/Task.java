@@ -1,4 +1,4 @@
-package com.killswitch.tasky.model;
+package com.killswitch.tasky.model.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

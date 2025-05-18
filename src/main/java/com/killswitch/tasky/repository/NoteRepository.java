@@ -1,6 +1,6 @@
 package com.killswitch.tasky.repository;
 
-import com.killswitch.tasky.model.Note;
+import com.killswitch.tasky.model.entity.Note;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;

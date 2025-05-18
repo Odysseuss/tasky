@@ -1,4 +1,4 @@
-package com.killswitch.tasky.model;
+package com.killswitch.tasky.model.entity;
 
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;

@@ -1,12 +1,11 @@
 package com.killswitch.tasky.service;
 
-import com.killswitch.tasky.model.Note;
+import com.killswitch.tasky.model.entity.Note;
 import com.killswitch.tasky.repository.NoteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor

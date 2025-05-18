@@ -1,6 +1,6 @@
 package com.killswitch.tasky.service;
 
-import com.killswitch.tasky.model.Task;
+import com.killswitch.tasky.model.entity.Task;
 
 import java.util.Optional;
 

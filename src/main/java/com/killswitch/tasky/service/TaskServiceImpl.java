@@ -1,12 +1,11 @@
 package com.killswitch.tasky.service;
 
-import com.killswitch.tasky.model.Task;
+import com.killswitch.tasky.model.entity.Task;
 import com.killswitch.tasky.repository.TaskRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicReference;
 
 @Service
 @RequiredArgsConstructor
