@@ -30,7 +30,7 @@ public class TaskController {
     @GetMapping(TASK_PATH_ID)
     public Task getTaskById(@PathVariable("taskId") Long id) {
         log.info("Get task by id: {}", id);
-        return taskService.getTask(id).orElse(null);
+        return taskService.getTask(id).orElseThrow(NotFoundException::new);
     }
 
 
@@ -45,12 +45,12 @@ public class TaskController {
         log.info("Delete task by id: {}", id);
 
         if (taskService.deleteTask(id)) {
-            log.info("Deleted task with id: {}", id);
-            return ResponseEntity.ok().build();
-        } else {
             log.info("Could not delete task with id: {}", id);
-            return ResponseEntity.notFound().build();
+            throw new NotFoundException();
         }
+
+        log.info("Deleted task with id: {}", id);
+        return ResponseEntity.noContent().build();
     }
 
     @PostMapping(TASK_PATH)
